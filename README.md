@@ -17,7 +17,7 @@ This project is part of my frontend development journey. It showcases a responsi
 
 ### 🧰 Tech Stack
 - **HTML5**
-CSS3 (custom transitions, effects)
+- CSS3 (custom transitions, effects)
 Vanilla JavaScript
 
 ### 📸 Preview
