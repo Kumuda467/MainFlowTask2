@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Stylish Product Cards</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      background: #f0f4f8;
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .frame {
+      width: 90%;
+      max-width: 1280px;
+      height: 500px;
+      overflow-y: auto;
+      padding: 10px;
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      background: white;
+    }
+
+    .card-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .card {
+      width: 280px;
+      perspective: 1000px;
+    }
+
+    .card-inner {
+      position: relative;
+      width: 100%;
+      height: 420px;
+      transform-style: preserve-3d;
+      transition: transform 0.8s;
+    }
+
+    .card:hover .card-inner {
+      transform: rotateY(180deg);
+    }
+
+    .card-front, .card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: #fff;
+      border-radius: 15px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      backface-visibility: hidden;
+      overflow: hidden;
+    }
+
+    .card-front img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      transition: transform 0.3s;
+    }
+
+    .card-front:hover img {
+      transform: scale(1.05);
+    }
+
+    .info {
+      padding: 15px;
+    }
+
+    .title {
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    .price {
+      color: #2e7d32;
+      font-size: 16px;
+      margin-top: 5px;
+    }
+
+    .stars {
+      color: gold;
+      margin: 10px 0;
+    }
+
+    .btn-cart {
+      padding: 10px 15px;
+      background: #2196f3;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .btn-cart:hover {
+      background: #0d47a1;
+    }
+
+    .card-back {
+      transform: rotateY(180deg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .card-back p {
+      font-size: 14px;
+      color: #333;
+    }
+
+    .badge {
+      position: absolute;
+      top: 15px;
+      left: -10px;
+      background: crimson;
+      color: white;
+      padding: 5px 15px;
+      transform: rotate(-45deg);
+      font-size: 12px;
+      font-weight: bold;
+    }
+
+    h2.section-title{
+      margin-bottom: 20px;
+      font-size: 28px;
+      color: #333;
+      text-align: center;
+    }
+
+    .heart {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      font-size: 20px;
+      color: #aaa;
+      cursor: pointer;
+    }
+
+    .heart.liked {
+      color: red;
+    }
+
+    @media (max-width: 768px) {
+      .card-container {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="frame">
+    <h2 class="section-title">Trending Sneakers</h2>
+    <div class="card-container">
+      <!-- Card 1 -->
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-front">
+            <span class="badge">SALE</span>
+            <span class="heart" onclick="toggleHeart(this)">♥</span>
+            <img src="assets/pexels-amanjakhar-2048548.jpg" alt="Product 1">
+            <div class="info">
+              <div class="title">Urban Blaze Mocha</div>
+              <div class="price">₹2,899</div>
+              <div class="stars">★★★★☆</div>
+              <button class="btn-cart">Add to Cart</button>
+            </div>
+          </div>
+          <div class="card-back">
+            <p>Urban Blaze Mocha sneakers offer durability, grip and a stylish finish for everyday comfort.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-front">
+            <span class="badge">SALE</span>
+            <span class="heart" onclick="toggleHeart(this)">♥</span>
+            <img src="assets/pexels-melvin-buezo-1253763-2529148.jpg" alt="Product 2">
+            <div class="info">
+              <div class="title">Comet-X Lows</div>
+              <div class="price">₹4,299</div>
+              <div class="stars">★★★★★</div>
+              <button class="btn-cart">Add to Cart</button>
+            </div>
+          </div>
+          <div class="card-back">
+            <p>Crafted from premium canvas, Comet-X Lows bring a cool vibe with unbeatable comfort.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-front">
+            <span class="badge">NEW</span>
+            <span class="heart" onclick="toggleHeart(this)">♥</span>
+            <img src="assets/pexels-mnzoutfits-1598505.jpg" alt="Product 3">
+            <div class="info">
+              <div class="title">Storm Runner</div>
+              <div class="price">₹3,499</div>
+              <div class="stars">★★★☆☆</div>
+              <button class="btn-cart">Add to Cart</button>
+            </div>
+          </div>
+          <div class="card-back">
+            <p>Lightweight and bold, Storm Runner keeps your pace fast and your fashion on point.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-front">
+            <span class="badge">HOT</span>
+            <span class="heart" onclick="toggleHeart(this)">♥</span>
+            <img src="assets/pexels-nytheone-1070360.jpg" alt="Product 4">
+            <div class="info">
+              <div class="title">Volt Edge</div>
+              <div class="price">₹3,199</div>
+              <div class="stars">★★★★☆</div>
+              <button class="btn-cart">Add to Cart</button>
+            </div>
+          </div>
+          <div class="card-back">
+            <p>Designed for agility and style, Volt Edge is your go-to sneaker for energetic outings.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    function toggleHeart(el) {
+      el.classList.toggle('liked');
+    }
+  </script>
+
+</body>
+</html>
